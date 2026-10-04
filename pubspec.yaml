@@ -10,7 +10,7 @@ workspace:
   - tools/update_lint_rules/
 
 melos:
-  sdkPath: .dvm/dart_sdk
+  sdkPath: .dart_sdk
 
   command:
     bootstrap:
