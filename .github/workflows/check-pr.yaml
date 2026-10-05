@@ -5,7 +5,7 @@ on:
 
 permissions:
   contents: read
-  actions: write
+  actions: read
   checks: write
 
 concurrency:
