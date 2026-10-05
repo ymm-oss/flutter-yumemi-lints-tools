@@ -28,7 +28,11 @@ This repository is a pub workspace. Resolve dependencies from the project root.
 mise exec -- dart pub get
 ```
 
-## 3. Read README.md
+## 3. Run tasks
+
+`mise tasks` lists the workspace tasks. `mise run test` runs the tests. `mise run test:report` writes `test_report.log` in each tool for CI. `mise run gen:build` regenerates code.
+
+## 4. Read README.md
 
 Read the README.md of the respective tool or package.
 

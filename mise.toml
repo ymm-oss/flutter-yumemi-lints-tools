@@ -3,3 +3,45 @@ min_version = "2026.9.16"
 
 [tools]
 dart = "3.7.2"
+
+# Workspace tasks run in each tool package.
+# Add a new package to every loop below.
+
+[tasks."gen:build"]
+description = "Generate code with build_runner in each tool."
+quiet = true
+run = '''
+for dir in tools/check_lint_rules_identity tools/update_lint_rules; do
+  (
+    cd "$dir"
+    dart run build_runner build -d
+  )
+done
+'''
+
+[tasks.test]
+description = "Run tests in each tool."
+quiet = true
+run = '''
+result=0
+for dir in tools/check_lint_rules_identity tools/update_lint_rules; do
+  if [ -d "$dir/test" ]; then
+    (cd "$dir" && dart test) || result=1
+  fi
+done
+exit "$result"
+'''
+
+[tasks."test:report"]
+description = "Run tests in each tool and write test_report.log."
+quiet = true
+run = '''
+result=0
+for dir in tools/check_lint_rules_identity tools/update_lint_rules; do
+  if [ -d "$dir/test" ]; then
+    (cd "$dir" && dart test --file-reporter="json:test_report.log") || result=1
+  fi
+done
+exit "$result"
+'''
+
