@@ -11,9 +11,6 @@ runs:
         MISE_LOCKED: "1"
         # https://mise.jdx.dev/configuration/settings.html#safe
         MISE_SAFE: "1"
-      with:
-        version: "2026.10.1"
-        cache: false
 
     - name: Get dependencies
       run: dart pub get
