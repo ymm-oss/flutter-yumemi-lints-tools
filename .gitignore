@@ -6,5 +6,5 @@
 /.idea/*
 !/.idea/runConfigurations/
 
-# Symlink to the mise-managed Dart SDK. See `mise run link-sdk`.
-/.dart_sdk
+# Symlink created by the mise VS Code extension. See docs/contributing/GET_STARTED.md.
+.vscode/mise-tools/

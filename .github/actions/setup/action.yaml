@@ -10,10 +10,6 @@ runs:
         version: "2026.10.1"
         cache: false
 
-    - name: Link Dart SDK
-      run: mise run link-sdk
-      shell: bash
-
     - name: Get dependencies
       run: dart pub get
       shell: bash
