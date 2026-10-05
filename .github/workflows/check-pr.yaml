@@ -29,19 +29,28 @@ jobs:
           fatal-infos: true
 
       - name: Check format
-        run: melos format --output none --set-exit-if-changed
-
-      - name: Check for circular dependencies
-        run: melos list --cycles
+        run: dart format --output=none --set-exit-if-changed .
 
       - name: Check for generated files diff
         run: |
-          melos run gen:build --no-select
+          for dir in tools/check_lint_rules_identity tools/update_lint_rules; do
+            (
+              cd "$dir"
+              dart run build_runner build -d
+            )
+          done
           git add -N .
           git diff --name-only --exit-code
 
       - name: Run test
-        run: melos run report:test --no-select
+        run: |
+          status=0
+          for dir in tools/check_lint_rules_identity tools/update_lint_rules; do
+            if [ -d "$dir/test" ]; then
+              (cd "$dir" && dart test --file-reporter="json:test_report.log") || status=1
+            fi
+          done
+          exit "$status"
         continue-on-error: true
 
       - name: Check file existence

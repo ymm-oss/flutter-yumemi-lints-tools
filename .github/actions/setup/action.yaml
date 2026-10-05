@@ -15,14 +15,3 @@ runs:
     - name: Get dependencies
       run: dart pub get
       shell: bash
-
-    - name: Set up melos
-      run: |
-        MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
-        dart pub global activate melos $MELOS_VERSION
-        # mise-action does not add the pub global bin directory that setup-dart added.
-        # GITHUB_PATH applies to later steps; export applies to melos bootstrap below.
-        echo "$HOME/.pub-cache/bin" >> "$GITHUB_PATH"
-        export PATH="$HOME/.pub-cache/bin:$PATH"
-        melos bootstrap
-      shell: bash
