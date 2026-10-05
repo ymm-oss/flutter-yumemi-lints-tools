@@ -8,10 +8,7 @@ Please install the necessary tools before making a contribution.
 [mise] manages the Dart SDK version for this repository.
 The [mise VS Code extension] symlinks that SDK to `.vscode/mise-tools/dart` for the Dart extension.
 
-1. Install mise globally.
-```shell
-brew install mise
-```
+1. Install mise. See the [mise installation guide].
 2. Execute the following command in the project root.
 ```shell
 mise install
@@ -47,6 +44,7 @@ Read the README.md of the respective tool or package.
 
 <!-- Links -->
 [mise]: https://mise.jdx.dev/
+[mise installation guide]: https://mise.jdx.dev/installing-mise.html
 [mise VS Code extension]: https://marketplace.visualstudio.com/items?itemName=hverlin.mise-vscode
 [Melos]: https://pub.dev/packages/melos
 [COPILOT.md]: https://github.com/yumemi-inc/flutter-yumemi-lints/blob/main/docs/COPILOT.md
