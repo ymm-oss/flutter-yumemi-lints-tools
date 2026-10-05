@@ -5,17 +5,21 @@ Please install the necessary tools before making a contribution.
 
 ## 1. Install Dart SDK
 
-[DVM] is Dart version management tool.
+[mise] manages the Dart SDK version for this repository.
+The [mise VS Code extension] symlinks that SDK to `.vscode/mise-tools/dart` for the Dart extension.
 
-1. Install DVM globally.
-```shell
-brew install blendfactory/tap/dvm
-```
+1. Install mise. See the [mise installation guide].
 2. Execute the following command in the project root.
 ```shell
-dvm use
+mise install
 ```
-3. Run the command `dvm dart --version` to check the version.
+3. Install the recommended extensions and reload the window.
+The workspace settings turn on automatic configuration and symlinks.
+The mise extension then creates `.vscode/mise-tools/dart`, which `dart.sdkPath` points at.
+4. Run the command `mise exec -- dart --version` to check the version.
+
+To use `dart` directly, activate mise in your shell. See the [mise getting started guide](https://mise.jdx.dev/getting-started.html).
+Melos uses that `dart` on `PATH`.
 
 ## 2. Install Melos
 
@@ -23,7 +27,7 @@ dvm use
 
 1. Activate melos globally.
 ```shell
-dvm dart pub global activate melos
+mise exec -- dart pub global activate melos
 ```
 2. Run the following commands to verify that the dependencies are resolved.
 ```shell
@@ -39,6 +43,8 @@ Read the README.md of the respective tool or package.
 - Activate GitHub Copilot according to [COPILOT.md]
 
 <!-- Links -->
-[DVM]: https://github.com/blendfactory/dvm
+[mise]: https://mise.jdx.dev/
+[mise installation guide]: https://mise.jdx.dev/installing-mise.html
+[mise VS Code extension]: https://marketplace.visualstudio.com/items?itemName=hverlin.mise-vscode
 [Melos]: https://pub.dev/packages/melos
 [COPILOT.md]: https://github.com/yumemi-inc/flutter-yumemi-lints/blob/main/docs/COPILOT.md
