@@ -38,48 +38,35 @@ class RuleMapper {
     );
   }
 
-  /// Convert a list of [LintCodeDto] to a list of [Rule]
+  /// Convert a list of [LintCodeDto] to a list of [Rule].
+  ///
+  /// Callers rewrite [LintCodeDto.name] to [LintCodeDto.sharedName] when the
+  /// SDK entry is an alias. Grouping by [LintCodeDto.name] therefore merges
+  /// that alias with the canonical entry of the same lint.
+  ///
+  /// An alias such as `noLeadingUnderscoresForLibraryPrefixesShadowed` has no
+  /// `state` or `deprecatedDetails`. Those fields are taken from the canonical
+  /// entry. `details` uses `deprecatedDetails` when present, and otherwise
+  /// `documentation`.
   static List<Rule> convertDtosToRules(Iterable<LintCodeDto> dtos) {
-    // Group DTOs by sharedName
-    final groupedLintCodeDtosBySharedName = dtos
-        .where((dto) => dto.sharedName != null)
-        // If `dto.sharedName` is not null, `dto.name` is the same as `dto.sharedName`.
-        // So, group by `dto.name`.
-        .groupListsBy((dto) => dto.name);
+    final rules = dtos.groupListsBy((dto) => dto.name).entries.map((e) {
+      final group = e.value;
 
-    // Convert DTOs with sharedName to Rules
-    final rulesWithSharedName = groupedLintCodeDtosBySharedName.entries.map((
-      e,
-    ) {
-      final dtos = e.value;
-
-      final categories = dtos.map((e) => e.categories).nonNulls.firstOrNull;
-      final deprecatedDetails =
-          dtos.map((e) => e.deprecatedDetails).nonNulls.firstOrNull;
-      final state = dtos.map((e) => e.state).nonNulls.firstOrNull;
+      final categories =
+          group.map((dto) => dto.categories).nonNulls.firstOrNull;
+      final details =
+          group.map((dto) => dto.deprecatedDetails).nonNulls.firstOrNull ??
+          group.map((dto) => dto.documentation).nonNulls.firstOrNull;
+      final state = group.map((dto) => dto.state).nonNulls.firstOrNull;
 
       return RuleMapper.buildRule(
         name: e.key,
         categories: categories,
-        details: deprecatedDetails,
+        details: details,
         state: state,
       );
     });
 
-    // Convert DTOs without sharedName to Rules
-    final rulesWithoutSharedName = dtos
-        .where((dto) => dto.sharedName == null)
-        .map(
-          (dto) => RuleMapper.buildRule(
-            name: dto.name,
-            categories: dto.categories,
-            details: dto.deprecatedDetails,
-            state: dto.state,
-          ),
-        );
-
-    final allRules = [...rulesWithSharedName, ...rulesWithoutSharedName];
-    // Sort by name
-    return allRules.sorted((a, b) => a.name.compareTo(b.name));
+    return rules.toList().sorted((a, b) => a.name.compareTo(b.name));
   }
 }
