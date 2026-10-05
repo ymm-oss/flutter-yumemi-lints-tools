@@ -19,22 +19,20 @@ The mise extension then creates `.vscode/mise-tools/dart`, which `dart.sdkPath` 
 4. Run the command `mise exec -- dart --version` to check the version.
 
 To use `dart` directly, activate mise in your shell. See the [mise getting started guide](https://mise.jdx.dev/getting-started.html).
-Melos uses that `dart` on `PATH`.
 
-## 2. Install Melos
+## 2. Get dependencies
 
-[Melos] is a tool that optimizes the workflow around managing multi-package repositories.
+This repository is a pub workspace. Resolve dependencies from the project root.
 
-1. Activate melos globally.
 ```shell
-mise exec -- dart pub global activate melos
-```
-2. Run the following commands to verify that the dependencies are resolved.
-```shell
-melos bootstrap
+mise exec -- dart pub get
 ```
 
-## 3. Read README.md
+## 3. Run tasks
+
+`mise tasks` lists the workspace tasks. `mise run test` runs the tests. `mise run test:report` writes `test_report.log` in each tool for CI. `mise run gen:build` regenerates code.
+
+## 4. Read README.md
 
 Read the README.md of the respective tool or package.
 
@@ -46,5 +44,4 @@ Read the README.md of the respective tool or package.
 [mise]: https://mise.jdx.dev/
 [mise installation guide]: https://mise.jdx.dev/installing-mise.html
 [mise VS Code extension]: https://marketplace.visualstudio.com/items?itemName=hverlin.mise-vscode
-[Melos]: https://pub.dev/packages/melos
 [COPILOT.md]: https://github.com/yumemi-inc/flutter-yumemi-lints/blob/main/docs/COPILOT.md
