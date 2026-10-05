@@ -48,6 +48,21 @@ void main() {
         );
       });
 
+      test('builds Rule when state is testing', () {
+        final rule = RuleMapper.buildRule(
+          name: 'usePrimaryConstructors',
+          categories: null,
+          details: 'test_details',
+          state: {'testing': '3.13'},
+        );
+
+        expect(RuleState.testing.active, isFalse);
+        expect(
+          rule.state[RuleState.testing],
+          equals(Since.dartSdk(Version.parse('3.13.0'))),
+        );
+      });
+
       test('builds Rule when state has multiple entries', () {
         final rule = RuleMapper.buildRule(
           name: 'test_name',

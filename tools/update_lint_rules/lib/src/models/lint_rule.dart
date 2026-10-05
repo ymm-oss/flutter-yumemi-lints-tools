@@ -33,11 +33,21 @@ enum RuleState {
   experimental,
   deprecated,
   removed,
-  internal;
+  internal,
+
+  /// Temporary lints used while a rule or migration is being evaluated.
+  ///
+  /// Added in dart-lang/sdk@3a3abc9. The SDK does not list them in generated
+  /// files or documentation. A later state, such as `stable`, can follow
+  /// `testing` in `messages.yaml`.
+  testing;
 
   bool get active => switch (this) {
     RuleState.stable || RuleState.experimental => true,
-    RuleState.deprecated || RuleState.removed || RuleState.internal => false,
+    RuleState.deprecated ||
+    RuleState.removed ||
+    RuleState.internal ||
+    RuleState.testing => false,
   };
 
   bool get inactive => !active;
@@ -85,23 +95,27 @@ sealed class Since with _$Since {
 typedef State = Map<RuleState, Since>;
 
 extension ExtState on State {
-  /// Check if the [State] has an active state with a supported version.
+  /// Whether [version] should include this lint.
+  ///
+  /// `messages.yaml` records the full state history. The state that applies to
+  /// [version] is the latest one whose `since` is at or before [version].
+  /// Only an active state (`stable` or `experimental`) includes the lint.
+  /// `testing` is inactive, so a lint that is still being tested is omitted,
+  /// and one that later becomes `stable` is included from that later version.
   bool hasSupportedVersion(Version version) {
-    // Check if the version is supported by any of the states
-    final supportedStates = entries.where((e) {
-      final since = e.value;
-      if (since is! SinceDartSdk) {
-        return false;
+    MapEntry<RuleState, SinceDartSdk>? current;
+    for (final entry in entries) {
+      final since = entry.value;
+      if (since is! SinceDartSdk || since.version > version) {
+        continue;
       }
-
-      return since.version <= version;
-    });
-
-    if (supportedStates.any((r) => r.key.inactive)) {
-      return false;
+      final selected = current?.value;
+      if (selected == null || since.version >= selected.version) {
+        current = MapEntry(entry.key, since);
+      }
     }
 
-    return supportedStates.any((r) => r.key.active);
+    return current?.key.active ?? false;
   }
 }
 
