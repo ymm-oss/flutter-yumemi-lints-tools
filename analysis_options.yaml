@@ -1,2 +1,4 @@
+include: package:lints/recommended.yaml
+
 plugins:
   riverpod_lint: ^3.1.9

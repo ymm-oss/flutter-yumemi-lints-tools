@@ -1,6 +1,4 @@
-include:
-  - package:lints/recommended.yaml
-  - ../../analysis_options.yaml
+include: ../../analysis_options.yaml
 
 analyzer:
   errors:
