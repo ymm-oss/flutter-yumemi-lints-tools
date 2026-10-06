@@ -44,8 +44,8 @@ Future<ExitStatus> updateLintRules(ProviderContainer container) async {
   try {
     final lintRules = await lintRuleService.getLintRules();
     final notRecommendedRules = await lintRuleService.getNotRecommendedRules();
-    final recommendedRuleSeverities =
-        await lintRuleService.getRecommendedRuleSeverities();
+    final recommendedRuleSeverities = await lintRuleService
+        .getRecommendedRuleSeverities();
 
     final dartSdkReleases = await sdkService.getDartSdkReleases();
     await analysisOptionsService.updateDartLintRules(

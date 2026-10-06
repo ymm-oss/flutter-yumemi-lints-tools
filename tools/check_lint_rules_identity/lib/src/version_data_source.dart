@@ -67,11 +67,10 @@ abstract class VersionDataSource {
     );
 
     final ls = await targetVersionDir.list().toList();
-    final allYaml =
-        ls
-            .whereType<File>()
-            .where((element) => element.name == 'all.yaml')
-            .first;
+    final allYaml = ls
+        .whereType<File>()
+        .where((element) => element.name == 'all.yaml')
+        .first;
     return allYaml.readAsString();
   }
 

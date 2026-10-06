@@ -54,8 +54,9 @@ class AnalysisOptionsService {
         ..createSync(recursive: true);
       final recommendedIncludeContent =
           'include: package:yumemi_lints/dart/${dartSdkVersion.excludePatchVersion}/all.yaml';
-      final formatterContent =
-          dartSdkVersion < Version(3, 8, 0) ? null : _formatterContent;
+      final formatterContent = dartSdkVersion < Version(3, 8, 0)
+          ? null
+          : _formatterContent;
       return outputRecommendedLintRules(
         outputFile: recommendedFile,
         notRecommendedRules: filteredNotRecommendedRules,
@@ -105,8 +106,9 @@ class AnalysisOptionsService {
         ..createSync(recursive: true);
       final recommendedIncludeContent =
           'include: package:yumemi_lints/flutter/${flutterSdkVersion.excludePatchVersion}/all.yaml';
-      final formatterContent =
-          dartSdkVersion < Version(3, 8, 0) ? null : _formatterContent;
+      final formatterContent = dartSdkVersion < Version(3, 8, 0)
+          ? null
+          : _formatterContent;
       return outputRecommendedLintRules(
         outputFile: recommendedFile,
         notRecommendedRules: filteredNotRecommendedRules,

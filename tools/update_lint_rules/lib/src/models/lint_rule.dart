@@ -4,8 +4,10 @@ import 'package:pub_semver/pub_semver.dart';
 part 'lint_rule.freezed.dart';
 part 'lint_rule.g.dart';
 
-typedef LintRules =
-    ({Iterable<DartLintRule> dart, Iterable<FlutterLintRule> flutter});
+typedef LintRules = ({
+  Iterable<DartLintRule> dart,
+  Iterable<FlutterLintRule> flutter,
+});
 
 @freezed
 sealed class LintRule with _$LintRule {

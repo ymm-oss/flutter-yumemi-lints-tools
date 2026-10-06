@@ -23,16 +23,14 @@ class DiffVersionService {
   Versions getDiffVersion() {
     final paths = diffPathListFile.readAsLinesSync();
     final versions = paths.map(extractVersion);
-    final flutterVersions =
-        versions
-            .where((version) => version.type == LintType.flutter)
-            .map((version) => version.version)
-            .toSet();
-    final dartVersions =
-        versions
-            .where((version) => version.type == LintType.dart)
-            .map((version) => version.version)
-            .toSet();
+    final flutterVersions = versions
+        .where((version) => version.type == LintType.flutter)
+        .map((version) => version.version)
+        .toSet();
+    final dartVersions = versions
+        .where((version) => version.type == LintType.dart)
+        .map((version) => version.version)
+        .toSet();
     return (flutter: flutterVersions, dart: dartVersions);
   }
 

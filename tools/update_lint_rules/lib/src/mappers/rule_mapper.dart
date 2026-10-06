@@ -52,8 +52,10 @@ class RuleMapper {
     final rules = dtos.groupListsBy((dto) => dto.name).entries.map((e) {
       final group = e.value;
 
-      final categories =
-          group.map((dto) => dto.categories).nonNulls.firstOrNull;
+      final categories = group
+          .map((dto) => dto.categories)
+          .nonNulls
+          .firstOrNull;
       final details =
           group.map((dto) => dto.deprecatedDetails).nonNulls.firstOrNull ??
           group.map((dto) => dto.documentation).nonNulls.firstOrNull;
