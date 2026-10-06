@@ -165,68 +165,74 @@ void main() {
         expect(rules, isEmpty);
       });
 
-      test('uses documentation and state from the canonical entry when the sharedName alias has neither', () {
-        final dtos = [
-          LintCodeDto(
-            name: 'noLeadingUnderscoresForLibraryPrefixes',
-            sharedName: null,
-            problemMessage: 'The library prefix starts with an underscore.',
-            correctionMessage: 'Try renaming the prefix.',
-            state: {'stable': '2.16'},
-            categories: ['style'],
-            hasPublishedDocs: true,
-            documentation: 'canonical documentation',
-            deprecatedDetails: null,
-            todo: null,
-          ),
-          LintCodeDto(
-            name: 'noLeadingUnderscoresForLibraryPrefixes',
-            sharedName: 'noLeadingUnderscoresForLibraryPrefixes',
-            problemMessage: 'The library prefix starts with an underscore.',
-            correctionMessage: 'Try renaming the prefix.',
-            state: null,
-            categories: null,
-            hasPublishedDocs: true,
-            documentation: null,
-            deprecatedDetails: null,
-            todo: null,
-          ),
-        ];
+      test(
+        'uses documentation and state from the canonical entry when the sharedName alias has neither',
+        () {
+          final dtos = [
+            LintCodeDto(
+              name: 'noLeadingUnderscoresForLibraryPrefixes',
+              sharedName: null,
+              problemMessage: 'The library prefix starts with an underscore.',
+              correctionMessage: 'Try renaming the prefix.',
+              state: {'stable': '2.16'},
+              categories: ['style'],
+              hasPublishedDocs: true,
+              documentation: 'canonical documentation',
+              deprecatedDetails: null,
+              todo: null,
+            ),
+            LintCodeDto(
+              name: 'noLeadingUnderscoresForLibraryPrefixes',
+              sharedName: 'noLeadingUnderscoresForLibraryPrefixes',
+              problemMessage: 'The library prefix starts with an underscore.',
+              correctionMessage: 'Try renaming the prefix.',
+              state: null,
+              categories: null,
+              hasPublishedDocs: true,
+              documentation: null,
+              deprecatedDetails: null,
+              todo: null,
+            ),
+          ];
 
-        final rules = RuleMapper.convertDtosToRules(dtos);
+          final rules = RuleMapper.convertDtosToRules(dtos);
 
-        expect(rules, hasLength(1));
-        final rule = rules.single;
-        expect(rule.name, 'noLeadingUnderscoresForLibraryPrefixes');
-        expect(rule.categories, ['style']);
-        expect(rule.details, 'canonical documentation');
-        expect(
-          rule.state[RuleState.stable],
-          Since.dartSdk(Version.parse('2.16.0')),
-        );
-      });
+          expect(rules, hasLength(1));
+          final rule = rules.single;
+          expect(rule.name, 'noLeadingUnderscoresForLibraryPrefixes');
+          expect(rule.categories, ['style']);
+          expect(rule.details, 'canonical documentation');
+          expect(
+            rule.state[RuleState.stable],
+            Since.dartSdk(Version.parse('2.16.0')),
+          );
+        },
+      );
 
-      test('throws FormatException when neither deprecatedDetails nor documentation is set', () {
-        final dtos = [
-          LintCodeDto(
-            name: 'incomplete',
-            sharedName: null,
-            problemMessage: null,
-            correctionMessage: null,
-            state: {'stable': '2.0'},
-            categories: ['style'],
-            hasPublishedDocs: false,
-            documentation: null,
-            deprecatedDetails: null,
-            todo: null,
-          ),
-        ];
+      test(
+        'throws FormatException when neither deprecatedDetails nor documentation is set',
+        () {
+          final dtos = [
+            LintCodeDto(
+              name: 'incomplete',
+              sharedName: null,
+              problemMessage: null,
+              correctionMessage: null,
+              state: {'stable': '2.0'},
+              categories: ['style'],
+              hasPublishedDocs: false,
+              documentation: null,
+              deprecatedDetails: null,
+              todo: null,
+            ),
+          ];
 
-        expect(
-          () => RuleMapper.convertDtosToRules(dtos),
-          throwsA(isA<FormatException>()),
-        );
-      });
+          expect(
+            () => RuleMapper.convertDtosToRules(dtos),
+            throwsA(isA<FormatException>()),
+          );
+        },
+      );
     });
   });
 }
