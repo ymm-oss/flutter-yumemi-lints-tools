@@ -5,7 +5,6 @@ import 'package:async/async.dart';
 import 'package:check_lint_rules_identity/src/lint_rules_dir.dart';
 import 'package:check_lint_rules_identity/src/models/lint_type.dart';
 import 'package:pub_semver/pub_semver.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'version_data_source.g.dart';
@@ -37,8 +36,7 @@ class FlutterVersionDataSource extends VersionDataSource {
 }
 
 abstract class VersionDataSource {
-  VersionDataSource({required Directory lintRulesDir})
-    : _lintRulesDir = lintRulesDir;
+  VersionDataSource({required this._lintRulesDir});
 
   final Directory _lintRulesDir;
   LintType get type;

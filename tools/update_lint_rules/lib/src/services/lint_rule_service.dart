@@ -2,7 +2,6 @@ import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:update_lint_rules/src/clients/app_client.dart';
 import 'package:update_lint_rules/src/extension/yaml_map_ext.dart';
@@ -23,7 +22,7 @@ LintRuleService lintRuleService(Ref ref) {
 }
 
 class LintRuleService {
-  LintRuleService({required AppClient appClient}) : _appClient = appClient;
+  LintRuleService({required this._appClient});
 
   final AppClient _appClient;
 

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pub_semver/pub_semver.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:update_lint_rules/src/clients/app_client.dart';
 import 'package:update_lint_rules/src/models/dart_sdk_release.dart';
@@ -18,7 +17,7 @@ SdkService sdkService(Ref ref) {
 }
 
 class SdkService {
-  const SdkService({required AppClient appClient}) : _appClient = appClient;
+  const SdkService({required this._appClient});
 
   final AppClient _appClient;
 

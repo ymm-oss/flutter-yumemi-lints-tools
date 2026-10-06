@@ -1,7 +1,6 @@
 import 'package:check_lint_rules_identity/src/version_data_source.dart';
 import 'package:collection/collection.dart';
 import 'package:pub_semver/pub_semver.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:yaml/yaml.dart';
 
