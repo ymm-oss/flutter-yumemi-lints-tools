@@ -1,5 +1,6 @@
 import 'package:file/memory.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 import 'package:test/test.dart';
 import 'package:update_lint_rules/src/models/exit_status.dart';
 import 'package:update_lint_rules/src/output_dir.dart';
@@ -12,6 +13,7 @@ import 'fakes/services/fake_analysis_options_service.dart';
 import 'fakes/services/fake_lint_rule_service.dart';
 import 'fakes/services/fake_sdk_service.dart';
 
+@Dependencies([lintRuleService, sdkService, analysisOptionsService])
 void main() {
   test('updateLintRules', () async {
     final fileSystem = MemoryFileSystem();
