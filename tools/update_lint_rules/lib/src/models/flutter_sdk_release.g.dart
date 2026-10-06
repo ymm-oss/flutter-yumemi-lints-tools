@@ -9,28 +9,23 @@ part of 'flutter_sdk_release.dart';
 // **************************************************************************
 
 _FlutterSdkRelease _$FlutterSdkReleaseFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      '_FlutterSdkRelease',
-      json,
-      ($checkedConvert) {
-        final val = _FlutterSdkRelease(
-          channel: $checkedConvert(
-            'channel',
-            (v) => $enumDecode(_$FlutterChannelEnumMap, v),
-          ),
-          version: $checkedConvert(
-            'version',
-            (v) => const _VersionJsonConverter().fromJson(v as String),
-          ),
-          dartSdkVersion: $checkedConvert(
-            'dart_sdk_version',
-            (v) => const _VersionJsonConverter().fromJson(v as String),
-          ),
-        );
-        return val;
-      },
-      fieldKeyMap: const {'dartSdkVersion': 'dart_sdk_version'},
-    );
+    $checkedCreate('_FlutterSdkRelease', json, ($checkedConvert) {
+      final val = _FlutterSdkRelease(
+        channel: $checkedConvert(
+          'channel',
+          (v) => $enumDecode(_$FlutterChannelEnumMap, v),
+        ),
+        version: $checkedConvert(
+          'version',
+          (v) => const _VersionJsonConverter().fromJson(v as String),
+        ),
+        dartSdkVersion: $checkedConvert(
+          'dart_sdk_version',
+          (v) => const _VersionJsonConverter().fromJson(v as String),
+        ),
+      );
+      return val;
+    }, fieldKeyMap: const {'dartSdkVersion': 'dart_sdk_version'});
 
 Map<String, dynamic> _$FlutterSdkReleaseToJson(_FlutterSdkRelease instance) =>
     <String, dynamic>{

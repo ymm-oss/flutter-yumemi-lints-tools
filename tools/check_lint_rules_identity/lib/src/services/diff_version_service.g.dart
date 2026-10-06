@@ -8,28 +8,57 @@ part of 'diff_version_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(diffVersionService)
+final diffVersionServiceProvider = DiffVersionServiceProvider._();
+
+final class DiffVersionServiceProvider
+    extends
+        $FunctionalProvider<
+          DiffVersionService,
+          DiffVersionService,
+          DiffVersionService
+        >
+    with $Provider<DiffVersionService> {
+  DiffVersionServiceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'diffVersionServiceProvider',
+        isAutoDispose: true,
+        dependencies: <ProviderOrFamily>[versionPathsFileProvider],
+        $allTransitiveDependencies: <ProviderOrFamily>[
+          DiffVersionServiceProvider.$allTransitiveDependencies0,
+        ],
+      );
+
+  static final $allTransitiveDependencies0 = versionPathsFileProvider;
+
+  @override
+  String debugGetCreateSourceHash() => _$diffVersionServiceHash();
+
+  @$internal
+  @override
+  $ProviderElement<DiffVersionService> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  DiffVersionService create(Ref ref) {
+    return diffVersionService(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(DiffVersionService value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<DiffVersionService>(value),
+    );
+  }
+}
+
 String _$diffVersionServiceHash() =>
     r'd7ed3e5c866f076eb24a551696eda8f09a405cb0';
-
-/// See also [diffVersionService].
-@ProviderFor(diffVersionService)
-final diffVersionServiceProvider =
-    AutoDisposeProvider<DiffVersionService>.internal(
-      diffVersionService,
-      name: r'diffVersionServiceProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$diffVersionServiceHash,
-      dependencies: <ProviderOrFamily>[versionPathsFileProvider],
-      allTransitiveDependencies: <ProviderOrFamily>{
-        versionPathsFileProvider,
-        ...?versionPathsFileProvider.allTransitiveDependencies,
-      },
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef DiffVersionServiceRef = AutoDisposeProviderRef<DiffVersionService>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
