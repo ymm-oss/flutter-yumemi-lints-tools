@@ -4,7 +4,7 @@ version: 4.1.0
 # repository: https://github.com/my_org/my_repo
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.13.5
 
 resolution: workspace
 
