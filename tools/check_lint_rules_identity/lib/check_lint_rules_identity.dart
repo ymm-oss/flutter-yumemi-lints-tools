@@ -35,6 +35,7 @@ Future<ExitStatus> run(List<String> argument) async {
       lintRulesDirProvider.overrideWithValue(lintRulesDir),
       versionPathsFileProvider.overrideWithValue(diffPathListFile),
     ],
+    retry: (_, _) => null,
   );
   try {
     final exitStatus = await checkLintRulesIdentity(container);
