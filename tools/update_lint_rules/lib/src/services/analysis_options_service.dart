@@ -63,6 +63,7 @@ class AnalysisOptionsService {
         recommendedRuleSeverities: filteredRecommendedRuleSeverities,
         includeContent: recommendedIncludeContent,
         formatterContent: formatterContent,
+        replacesStrictRawTypes: _replacesStrictRawTypes(dartSdkVersion),
       );
     });
 
@@ -115,6 +116,7 @@ class AnalysisOptionsService {
         recommendedRuleSeverities: filteredRecommendedRuleSeverities,
         includeContent: recommendedIncludeContent,
         formatterContent: formatterContent,
+        replacesStrictRawTypes: _replacesStrictRawTypes(dartSdkVersion),
       );
     });
 
@@ -176,6 +178,7 @@ linter:
     required Iterable<RecommendedRuleSeverity> recommendedRuleSeverities,
     required String includeContent,
     required String? formatterContent,
+    required bool replacesStrictRawTypes,
   }) async {
     final contentBuffer = StringBuffer();
     contentBuffer.writeln(_headerContent);
@@ -184,7 +187,20 @@ linter:
     contentBuffer.writeln(includeContent);
     contentBuffer.writeln();
 
-    contentBuffer.writeln(_analyzerContent);
+    contentBuffer.writeln(
+      _analyzerContent(strictRawTypes: !replacesStrictRawTypes),
+    );
+
+    if (replacesStrictRawTypes) {
+      notRecommendedRules = notRecommendedRules.map((rule) {
+        if (rule.rule.name != 'avoid_annotating_with_dynamic') {
+          return rule;
+        }
+        return rule.copyWith(
+          reason: 'Conflicts with enabling `no_raw_types`.',
+        );
+      });
+    }
 
     const indent = '    ';
     final recommendedRuleSeveritiesTexts = recommendedRuleSeverities
@@ -221,20 +237,29 @@ linter:
 
 const _headerContent = '# GENERATED CODE - DO NOT MODIFY BY HAND';
 
-const _analyzerContent = '''
+final _strictRawTypesSince = Version(3, 13, 0);
+
+bool _replacesStrictRawTypes(Version dartSdkVersion) =>
+    dartSdkVersion >= _strictRawTypesSince;
+
+String _analyzerContent({required bool strictRawTypes}) {
+  final strictRawTypesLine = strictRawTypes
+      ? '    strict-raw-types: true\n'
+      : '';
+  return '''
 analyzer:
   language:
     # Increase safety as much as possible.
     strict-casts: true
     strict-inference: true
-    strict-raw-types: true
-  errors:
+$strictRawTypesLine  errors:
     # By including all.yaml, some rules will conflict. These warnings will be addressed within this file.
     included_file_warning: ignore
 
     # Members annotated with `visibleForTesting` should not be referenced outside of the library in which they are declared or libraries within the test directory.
     invalid_use_of_visible_for_testing_member: error
 ''';
+}
 
 const _formatterContent = '''
 formatter:
