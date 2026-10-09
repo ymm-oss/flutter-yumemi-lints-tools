@@ -63,7 +63,9 @@ class AnalysisOptionsService {
         recommendedRuleSeverities: filteredRecommendedRuleSeverities,
         includeContent: recommendedIncludeContent,
         formatterContent: formatterContent,
-        replacesStrictRawTypes: _replacesStrictRawTypes(dartSdkVersion),
+        shouldReplaceStrictRawTypes: _shouldReplaceStrictRawTypes(
+          dartSdkVersion,
+        ),
       );
     });
 
@@ -116,7 +118,9 @@ class AnalysisOptionsService {
         recommendedRuleSeverities: filteredRecommendedRuleSeverities,
         includeContent: recommendedIncludeContent,
         formatterContent: formatterContent,
-        replacesStrictRawTypes: _replacesStrictRawTypes(dartSdkVersion),
+        shouldReplaceStrictRawTypes: _shouldReplaceStrictRawTypes(
+          dartSdkVersion,
+        ),
       );
     });
 
@@ -178,7 +182,7 @@ linter:
     required Iterable<RecommendedRuleSeverity> recommendedRuleSeverities,
     required String includeContent,
     required String? formatterContent,
-    required bool replacesStrictRawTypes,
+    required bool shouldReplaceStrictRawTypes,
   }) async {
     final contentBuffer = StringBuffer();
     contentBuffer.writeln(_headerContent);
@@ -188,10 +192,10 @@ linter:
     contentBuffer.writeln();
 
     contentBuffer.writeln(
-      _analyzerContent(strictRawTypes: !replacesStrictRawTypes),
+      _analyzerContent(strictRawTypes: !shouldReplaceStrictRawTypes),
     );
 
-    if (replacesStrictRawTypes) {
+    if (shouldReplaceStrictRawTypes) {
       notRecommendedRules = notRecommendedRules.map((rule) {
         if (rule.rule.name != 'avoid_annotating_with_dynamic') {
           return rule;
@@ -239,7 +243,7 @@ const _headerContent = '# GENERATED CODE - DO NOT MODIFY BY HAND';
 
 final _strictRawTypesSince = Version(3, 13, 0);
 
-bool _replacesStrictRawTypes(Version dartSdkVersion) =>
+bool _shouldReplaceStrictRawTypes(Version dartSdkVersion) =>
     dartSdkVersion >= _strictRawTypesSince;
 
 String _analyzerContent({required bool strictRawTypes}) {
