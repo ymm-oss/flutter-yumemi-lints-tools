@@ -8,25 +8,46 @@ part of 'lint_rules_dir.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$lintRulesDirHash() => r'80cd3d32cfb80e9dcfcb6428ab4f693e4a372744';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [lintRulesDir].
 @ProviderFor(lintRulesDir)
-final lintRulesDirProvider = AutoDisposeProvider<Directory>.internal(
-  (_) =>
-      throw UnsupportedError(
-        'The provider "lintRulesDirProvider" is expected to get overridden/scoped, '
-        'but was accessed without an override.',
-      ),
-  name: r'lintRulesDirProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$lintRulesDirHash,
-  dependencies: const <ProviderOrFamily>[],
-  allTransitiveDependencies: const <ProviderOrFamily>{},
-);
+final lintRulesDirProvider = LintRulesDirProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef LintRulesDirRef = AutoDisposeProviderRef<Directory>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class LintRulesDirProvider
+    extends $FunctionalProvider<Directory, Directory, Directory>
+    with $Provider<Directory> {
+  LintRulesDirProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'lintRulesDirProvider',
+        isAutoDispose: true,
+        dependencies: <ProviderOrFamily>[],
+        $allTransitiveDependencies: <ProviderOrFamily>[],
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$lintRulesDirHash();
+
+  @$internal
+  @override
+  $ProviderElement<Directory> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  Directory create(Ref ref) {
+    return lintRulesDir(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(Directory value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<Directory>(value),
+    );
+  }
+}
+
+String _$lintRulesDirHash() => r'80cd3d32cfb80e9dcfcb6428ab4f693e4a372744';

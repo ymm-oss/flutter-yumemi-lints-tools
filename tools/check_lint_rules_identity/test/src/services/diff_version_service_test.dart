@@ -10,7 +10,8 @@ void main() {
       'Analyze the version from a file containing the paths of differential files',
       () {
         // Arrange
-        final file = MemoryFileSystem().file('file')..writeAsStringSync('''
+        final file = MemoryFileSystem().file('file')
+          ..writeAsStringSync('''
 build/flutter/3.16/all.yaml
 build/flutter/3.16/recommended.yaml
 build/flutter/3.13/all.yaml

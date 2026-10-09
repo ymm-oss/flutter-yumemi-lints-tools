@@ -8,26 +8,51 @@ part of 'lint_rule_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$lintRuleServiceHash() => r'a8aa2f6e7c1491af9660aa3649bf6f052d12b6c4';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [lintRuleService].
 @ProviderFor(lintRuleService)
-final lintRuleServiceProvider = AutoDisposeProvider<LintRuleService>.internal(
-  lintRuleService,
-  name: r'lintRuleServiceProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$lintRuleServiceHash,
-  dependencies: <ProviderOrFamily>[appClientProvider],
-  allTransitiveDependencies: <ProviderOrFamily>{
-    appClientProvider,
-    ...?appClientProvider.allTransitiveDependencies,
-  },
-);
+final lintRuleServiceProvider = LintRuleServiceProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef LintRuleServiceRef = AutoDisposeProviderRef<LintRuleService>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class LintRuleServiceProvider
+    extends
+        $FunctionalProvider<LintRuleService, LintRuleService, LintRuleService>
+    with $Provider<LintRuleService> {
+  LintRuleServiceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'lintRuleServiceProvider',
+        isAutoDispose: true,
+        dependencies: <ProviderOrFamily>[appClientProvider],
+        $allTransitiveDependencies: <ProviderOrFamily>[
+          LintRuleServiceProvider.$allTransitiveDependencies0,
+        ],
+      );
+
+  static final $allTransitiveDependencies0 = appClientProvider;
+
+  @override
+  String debugGetCreateSourceHash() => _$lintRuleServiceHash();
+
+  @$internal
+  @override
+  $ProviderElement<LintRuleService> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  LintRuleService create(Ref ref) {
+    return lintRuleService(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(LintRuleService value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<LintRuleService>(value),
+    );
+  }
+}
+
+String _$lintRuleServiceHash() => r'a8aa2f6e7c1491af9660aa3649bf6f052d12b6c4';

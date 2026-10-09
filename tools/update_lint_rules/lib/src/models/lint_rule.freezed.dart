@@ -1,7 +1,6 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'lint_rule.dart';
@@ -10,6 +9,7 @@ part of 'lint_rule.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
@@ -26,16 +26,21 @@ $LintRuleCopyWith<LintRule> get copyWith => _$LintRuleCopyWithImpl<LintRule>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is LintRule&&(identical(other.rule, rule) || other.rule == rule));
+  final _this = this as LintRule;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LintRule&&(identical(other.rule, _this.rule) || other.rule == _this.rule));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,rule);
+int get hashCode {
+  final _this = this as LintRule;
+  return Object.hash(runtimeType,_this.rule);
+}
 
 @override
 String toString() {
-  return 'LintRule(rule: $rule)';
+  final _this = this as LintRule;
+  return 'LintRule(rule: ${_this.rule})';
 }
 
 
@@ -82,6 +87,136 @@ $RuleCopyWith<$Res> get rule {
 }
 
 
+/// Adds pattern-matching-related methods to [LintRule].
+extension LintRulePatterns on LintRule {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( DartLintRule value)?  dart,TResult Function( FlutterLintRule value)?  flutter,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case DartLintRule() when dart != null:
+return dart(_that);case FlutterLintRule() when flutter != null:
+return flutter(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( DartLintRule value)  dart,required TResult Function( FlutterLintRule value)  flutter,}){
+final _that = this;
+switch (_that) {
+case DartLintRule():
+return dart(_that);case FlutterLintRule():
+return flutter(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( DartLintRule value)?  dart,TResult? Function( FlutterLintRule value)?  flutter,}){
+final _that = this;
+switch (_that) {
+case DartLintRule() when dart != null:
+return dart(_that);case FlutterLintRule() when flutter != null:
+return flutter(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Rule rule)?  dart,TResult Function( Rule rule)?  flutter,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case DartLintRule() when dart != null:
+return dart(_that.rule);case FlutterLintRule() when flutter != null:
+return flutter(_that.rule);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Rule rule)  dart,required TResult Function( Rule rule)  flutter,}) {final _that = this;
+switch (_that) {
+case DartLintRule():
+return dart(_that.rule);case FlutterLintRule():
+return flutter(_that.rule);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Rule rule)?  dart,TResult? Function( Rule rule)?  flutter,}) {final _that = this;
+switch (_that) {
+case DartLintRule() when dart != null:
+return dart(_that.rule);case FlutterLintRule() when flutter != null:
+return flutter(_that.rule);case _:
+  return null;
+
+}
+}
+
+}
+
 /// @nodoc
 
 
@@ -101,16 +236,18 @@ $DartLintRuleCopyWith<DartLintRule> get copyWith => _$DartLintRuleCopyWithImpl<D
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is DartLintRule&&(identical(other.rule, rule) || other.rule == rule));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is DartLintRule&&(identical(other.rule, rule) || other.rule == rule));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,rule);
+int get hashCode {
+    return Object.hash(runtimeType,rule);
+}
 
 @override
 String toString() {
-  return 'LintRule.dart(rule: $rule)';
+    return 'LintRule.dart(rule: $rule)';
 }
 
 
@@ -176,16 +313,18 @@ $FlutterLintRuleCopyWith<FlutterLintRule> get copyWith => _$FlutterLintRuleCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FlutterLintRule&&(identical(other.rule, rule) || other.rule == rule));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is FlutterLintRule&&(identical(other.rule, rule) || other.rule == rule));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,rule);
+int get hashCode {
+    return Object.hash(runtimeType,rule);
+}
 
 @override
 String toString() {
-  return 'LintRule.flutter(rule: $rule)';
+    return 'LintRule.flutter(rule: $rule)';
 }
 
 
@@ -249,16 +388,21 @@ $RuleCopyWith<Rule> get copyWith => _$RuleCopyWithImpl<Rule>(this as Rule, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Rule&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.categories, categories)&&(identical(other.details, details) || other.details == details)&&const DeepCollectionEquality().equals(other.state, state));
+  final _this = this as Rule;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Rule&&(identical(other.name, _this.name) || other.name == _this.name)&&const DeepCollectionEquality().equals(other.categories, _this.categories)&&(identical(other.details, _this.details) || other.details == _this.details)&&const DeepCollectionEquality().equals(other.state, _this.state));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,const DeepCollectionEquality().hash(categories),details,const DeepCollectionEquality().hash(state));
+int get hashCode {
+  final _this = this as Rule;
+  return Object.hash(runtimeType,_this.name,const DeepCollectionEquality().hash(_this.categories),_this.details,const DeepCollectionEquality().hash(_this.state));
+}
 
 @override
 String toString() {
-  return 'Rule(name: $name, categories: $categories, details: $details, state: $state)';
+  final _this = this as Rule;
+  return 'Rule(name: ${_this.name}, categories: ${_this.categories}, details: ${_this.details}, state: ${_this.state})';
 }
 
 
@@ -287,7 +431,7 @@ class _$RuleCopyWithImpl<$Res>
 /// Create a copy of Rule
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? categories = null,Object? details = null,Object? state = null,}) {
-  return _then(_self.copyWith(
+  return _then(Rule(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,categories: null == categories ? _self.categories : categories // ignore: cast_nullable_to_non_nullable
 as List<String>,details: null == details ? _self.details : details // ignore: cast_nullable_to_non_nullable
@@ -299,11 +443,141 @@ as Map<RuleState, Since>,
 }
 
 
+/// Adds pattern-matching-related methods to [Rule].
+extension RulePatterns on Rule {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Rule value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Rule() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Rule value)  $default,){
+final _that = this;
+switch (_that) {
+case _Rule():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Rule value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Rule() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  List<String> categories, @JsonKey(name: 'deprecatedDetails')  String details, @_StateJsonConverter()  Map<RuleState, Since> state)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Rule() when $default != null:
+return $default(_that.name,_that.categories,_that.details,_that.state);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  List<String> categories, @JsonKey(name: 'deprecatedDetails')  String details, @_StateJsonConverter()  Map<RuleState, Since> state)  $default,) {final _that = this;
+switch (_that) {
+case _Rule():
+return $default(_that.name,_that.categories,_that.details,_that.state);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  List<String> categories, @JsonKey(name: 'deprecatedDetails')  String details, @_StateJsonConverter()  Map<RuleState, Since> state)?  $default,) {final _that = this;
+switch (_that) {
+case _Rule() when $default != null:
+return $default(_that.name,_that.categories,_that.details,_that.state);case _:
+  return null;
+
+}
+}
+
+}
+
 /// @nodoc
 @JsonSerializable()
 
 class _Rule extends Rule {
-  const _Rule({required this.name, required final  List<String> categories, @JsonKey(name: 'deprecatedDetails') required this.details, @_StateJsonConverter() required final  Map<RuleState, Since> state}): _categories = categories,_state = state,super._();
+  const _Rule({required this.name, required  List<String> categories, @JsonKey(name: 'deprecatedDetails') required this.details, @_StateJsonConverter() required  Map<RuleState, Since> state}): _categories = categories,_state = state,super._();
   factory _Rule.fromJson(Map<String, dynamic> json) => _$RuleFromJson(json);
 
 @override final  String name;
@@ -336,16 +610,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Rule&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other._categories, _categories)&&(identical(other.details, details) || other.details == details)&&const DeepCollectionEquality().equals(other._state, _state));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _Rule&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.categories, _categories)&&(identical(other.details, details) || other.details == details)&&const DeepCollectionEquality().equals(other.state, _state));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,const DeepCollectionEquality().hash(_categories),details,const DeepCollectionEquality().hash(_state));
+int get hashCode {
+    return Object.hash(runtimeType,name,const DeepCollectionEquality().hash(_categories),details,const DeepCollectionEquality().hash(_state));
+}
 
 @override
 String toString() {
-  return 'Rule(name: $name, categories: $categories, details: $details, state: $state)';
+    return 'Rule(name: $name, categories: $categories, details: $details, state: $state)';
 }
 
 
@@ -395,7 +671,7 @@ mixin _$Since {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Since);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is Since);
 }
 
 
@@ -404,7 +680,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'Since()';
+    return 'Since()';
 }
 
 
@@ -415,6 +691,136 @@ class $SinceCopyWith<$Res>  {
 $SinceCopyWith(Since _, $Res Function(Since) __);
 }
 
+
+/// Adds pattern-matching-related methods to [Since].
+extension SincePatterns on Since {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SinceDartSdk value)?  dartSdk,TResult Function( SinceUnreleased value)?  unreleased,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case SinceDartSdk() when dartSdk != null:
+return dartSdk(_that);case SinceUnreleased() when unreleased != null:
+return unreleased(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SinceDartSdk value)  dartSdk,required TResult Function( SinceUnreleased value)  unreleased,}){
+final _that = this;
+switch (_that) {
+case SinceDartSdk():
+return dartSdk(_that);case SinceUnreleased():
+return unreleased(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SinceDartSdk value)?  dartSdk,TResult? Function( SinceUnreleased value)?  unreleased,}){
+final _that = this;
+switch (_that) {
+case SinceDartSdk() when dartSdk != null:
+return dartSdk(_that);case SinceUnreleased() when unreleased != null:
+return unreleased(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( Version version)?  dartSdk,TResult Function()?  unreleased,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case SinceDartSdk() when dartSdk != null:
+return dartSdk(_that.version);case SinceUnreleased() when unreleased != null:
+return unreleased();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( Version version)  dartSdk,required TResult Function()  unreleased,}) {final _that = this;
+switch (_that) {
+case SinceDartSdk():
+return dartSdk(_that.version);case SinceUnreleased():
+return unreleased();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( Version version)?  dartSdk,TResult? Function()?  unreleased,}) {final _that = this;
+switch (_that) {
+case SinceDartSdk() when dartSdk != null:
+return dartSdk(_that.version);case SinceUnreleased() when unreleased != null:
+return unreleased();case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 
@@ -435,16 +841,18 @@ $SinceDartSdkCopyWith<SinceDartSdk> get copyWith => _$SinceDartSdkCopyWithImpl<S
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SinceDartSdk&&(identical(other.version, version) || other.version == version));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SinceDartSdk&&(identical(other.version, version) || other.version == version));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,version);
+int get hashCode {
+    return Object.hash(runtimeType,version);
+}
 
 @override
 String toString() {
-  return 'Since.dartSdk(version: $version)';
+    return 'Since.dartSdk(version: $version)';
 }
 
 
@@ -496,7 +904,7 @@ class SinceUnreleased extends Since {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SinceUnreleased);
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is SinceUnreleased);
 }
 
 
@@ -505,7 +913,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'Since.unreleased()';
+    return 'Since.unreleased()';
 }
 
 

@@ -1,7 +1,6 @@
 import 'package:file/file.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pub_semver/pub_semver.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:update_lint_rules/src/extension/version_ext.dart';
 import 'package:update_lint_rules/src/models/dart_sdk_release.dart';
@@ -20,8 +19,7 @@ AnalysisOptionsService analysisOptionsService(Ref ref) {
 }
 
 class AnalysisOptionsService {
-  const AnalysisOptionsService({required Directory outputDir})
-    : _outputDir = outputDir;
+  const AnalysisOptionsService({required this._outputDir});
 
   final Directory _outputDir;
 
@@ -56,8 +54,9 @@ class AnalysisOptionsService {
         ..createSync(recursive: true);
       final recommendedIncludeContent =
           'include: package:yumemi_lints/dart/${dartSdkVersion.excludePatchVersion}/all.yaml';
-      final formatterContent =
-          dartSdkVersion < Version(3, 8, 0) ? null : _formatterContent;
+      final formatterContent = dartSdkVersion < Version(3, 8, 0)
+          ? null
+          : _formatterContent;
       return outputRecommendedLintRules(
         outputFile: recommendedFile,
         notRecommendedRules: filteredNotRecommendedRules,
@@ -107,8 +106,9 @@ class AnalysisOptionsService {
         ..createSync(recursive: true);
       final recommendedIncludeContent =
           'include: package:yumemi_lints/flutter/${flutterSdkVersion.excludePatchVersion}/all.yaml';
-      final formatterContent =
-          dartSdkVersion < Version(3, 8, 0) ? null : _formatterContent;
+      final formatterContent = dartSdkVersion < Version(3, 8, 0)
+          ? null
+          : _formatterContent;
       return outputRecommendedLintRules(
         outputFile: recommendedFile,
         notRecommendedRules: filteredNotRecommendedRules,

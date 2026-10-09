@@ -1,7 +1,6 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'flutter_sdk_release.dart';
@@ -10,6 +9,7 @@ part of 'flutter_sdk_release.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // dart format off
 T _$identity<T>(T value) => value;
 
@@ -29,16 +29,21 @@ $FlutterSdkReleaseCopyWith<FlutterSdkRelease> get copyWith => _$FlutterSdkReleas
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is FlutterSdkRelease&&(identical(other.channel, channel) || other.channel == channel)&&(identical(other.version, version) || other.version == version)&&(identical(other.dartSdkVersion, dartSdkVersion) || other.dartSdkVersion == dartSdkVersion));
+  final _this = this as FlutterSdkRelease;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FlutterSdkRelease&&(identical(other.channel, _this.channel) || other.channel == _this.channel)&&(identical(other.version, _this.version) || other.version == _this.version)&&(identical(other.dartSdkVersion, _this.dartSdkVersion) || other.dartSdkVersion == _this.dartSdkVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,channel,version,dartSdkVersion);
+int get hashCode {
+  final _this = this as FlutterSdkRelease;
+  return Object.hash(runtimeType,_this.channel,_this.version,_this.dartSdkVersion);
+}
 
 @override
 String toString() {
-  return 'FlutterSdkRelease(channel: $channel, version: $version, dartSdkVersion: $dartSdkVersion)';
+  final _this = this as FlutterSdkRelease;
+  return 'FlutterSdkRelease(channel: ${_this.channel}, version: ${_this.version}, dartSdkVersion: ${_this.dartSdkVersion})';
 }
 
 
@@ -67,7 +72,7 @@ class _$FlutterSdkReleaseCopyWithImpl<$Res>
 /// Create a copy of FlutterSdkRelease
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? channel = null,Object? version = null,Object? dartSdkVersion = null,}) {
-  return _then(_self.copyWith(
+  return _then(FlutterSdkRelease(
 channel: null == channel ? _self.channel : channel // ignore: cast_nullable_to_non_nullable
 as FlutterChannel,version: null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
 as Version,dartSdkVersion: null == dartSdkVersion ? _self.dartSdkVersion : dartSdkVersion // ignore: cast_nullable_to_non_nullable
@@ -77,6 +82,136 @@ as Version,
 
 }
 
+
+/// Adds pattern-matching-related methods to [FlutterSdkRelease].
+extension FlutterSdkReleasePatterns on FlutterSdkRelease {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _FlutterSdkRelease value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _FlutterSdkRelease() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _FlutterSdkRelease value)  $default,){
+final _that = this;
+switch (_that) {
+case _FlutterSdkRelease():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _FlutterSdkRelease value)?  $default,){
+final _that = this;
+switch (_that) {
+case _FlutterSdkRelease() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( FlutterChannel channel, @_VersionJsonConverter()  Version version, @_VersionJsonConverter()@JsonKey(name: 'dart_sdk_version')  Version dartSdkVersion)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _FlutterSdkRelease() when $default != null:
+return $default(_that.channel,_that.version,_that.dartSdkVersion);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( FlutterChannel channel, @_VersionJsonConverter()  Version version, @_VersionJsonConverter()@JsonKey(name: 'dart_sdk_version')  Version dartSdkVersion)  $default,) {final _that = this;
+switch (_that) {
+case _FlutterSdkRelease():
+return $default(_that.channel,_that.version,_that.dartSdkVersion);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( FlutterChannel channel, @_VersionJsonConverter()  Version version, @_VersionJsonConverter()@JsonKey(name: 'dart_sdk_version')  Version dartSdkVersion)?  $default,) {final _that = this;
+switch (_that) {
+case _FlutterSdkRelease() when $default != null:
+return $default(_that.channel,_that.version,_that.dartSdkVersion);case _:
+  return null;
+
+}
+}
+
+}
 
 /// @nodoc
 @JsonSerializable()
@@ -102,16 +237,18 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _FlutterSdkRelease&&(identical(other.channel, channel) || other.channel == channel)&&(identical(other.version, version) || other.version == version)&&(identical(other.dartSdkVersion, dartSdkVersion) || other.dartSdkVersion == dartSdkVersion));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _FlutterSdkRelease&&(identical(other.channel, channel) || other.channel == channel)&&(identical(other.version, version) || other.version == version)&&(identical(other.dartSdkVersion, dartSdkVersion) || other.dartSdkVersion == dartSdkVersion));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,channel,version,dartSdkVersion);
+int get hashCode {
+    return Object.hash(runtimeType,channel,version,dartSdkVersion);
+}
 
 @override
 String toString() {
-  return 'FlutterSdkRelease(channel: $channel, version: $version, dartSdkVersion: $dartSdkVersion)';
+    return 'FlutterSdkRelease(channel: $channel, version: $version, dartSdkVersion: $dartSdkVersion)';
 }
 
 

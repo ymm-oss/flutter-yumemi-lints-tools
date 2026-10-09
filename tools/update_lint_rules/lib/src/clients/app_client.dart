@@ -1,5 +1,4 @@
 import 'package:http/http.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_client.g.dart';

@@ -8,24 +8,50 @@ part of 'sdk_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sdkServiceHash() => r'a72a4e9bdd7f9e92486a1c39510a036b81210cd9';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [sdkService].
 @ProviderFor(sdkService)
-final sdkServiceProvider = AutoDisposeProvider<SdkService>.internal(
-  sdkService,
-  name: r'sdkServiceProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$sdkServiceHash,
-  dependencies: <ProviderOrFamily>[appClientProvider],
-  allTransitiveDependencies: <ProviderOrFamily>{
-    appClientProvider,
-    ...?appClientProvider.allTransitiveDependencies,
-  },
-);
+final sdkServiceProvider = SdkServiceProvider._();
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef SdkServiceRef = AutoDisposeProviderRef<SdkService>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+final class SdkServiceProvider
+    extends $FunctionalProvider<SdkService, SdkService, SdkService>
+    with $Provider<SdkService> {
+  SdkServiceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'sdkServiceProvider',
+        isAutoDispose: true,
+        dependencies: <ProviderOrFamily>[appClientProvider],
+        $allTransitiveDependencies: <ProviderOrFamily>[
+          SdkServiceProvider.$allTransitiveDependencies0,
+        ],
+      );
+
+  static final $allTransitiveDependencies0 = appClientProvider;
+
+  @override
+  String debugGetCreateSourceHash() => _$sdkServiceHash();
+
+  @$internal
+  @override
+  $ProviderElement<SdkService> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  SdkService create(Ref ref) {
+    return sdkService(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(SdkService value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<SdkService>(value),
+    );
+  }
+}
+
+String _$sdkServiceHash() => r'a72a4e9bdd7f9e92486a1c39510a036b81210cd9';

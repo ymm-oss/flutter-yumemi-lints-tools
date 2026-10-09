@@ -2,12 +2,14 @@ import 'package:file/file.dart';
 import 'package:file/local.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 import 'package:update_lint_rules/src/models/exit_status.dart';
 import 'package:update_lint_rules/src/output_dir.dart';
 import 'package:update_lint_rules/src/services/analysis_options_service.dart';
 import 'package:update_lint_rules/src/services/lint_rule_service.dart';
 import 'package:update_lint_rules/src/services/sdk_service.dart';
 
+@Dependencies([lintRuleService, sdkService, analysisOptionsService])
 Future<ExitStatus> run(List<String> args) async {
   final outputDirPath = args.firstOrNull;
 
@@ -26,6 +28,7 @@ Future<ExitStatus> run(List<String> args) async {
 
   final container = ProviderContainer(
     overrides: [outputDirProvider.overrideWithValue(outputDir)],
+    retry: (_, _) => null,
   );
   try {
     final exitStatus = await updateLintRules(container);
@@ -36,6 +39,7 @@ Future<ExitStatus> run(List<String> args) async {
 }
 
 @visibleForTesting
+@Dependencies([lintRuleService, sdkService, analysisOptionsService])
 Future<ExitStatus> updateLintRules(ProviderContainer container) async {
   final lintRuleService = container.read(lintRuleServiceProvider);
   final sdkService = container.read(sdkServiceProvider);
@@ -44,8 +48,8 @@ Future<ExitStatus> updateLintRules(ProviderContainer container) async {
   try {
     final lintRules = await lintRuleService.getLintRules();
     final notRecommendedRules = await lintRuleService.getNotRecommendedRules();
-    final recommendedRuleSeverities =
-        await lintRuleService.getRecommendedRuleSeverities();
+    final recommendedRuleSeverities = await lintRuleService
+        .getRecommendedRuleSeverities();
 
     final dartSdkReleases = await sdkService.getDartSdkReleases();
     await analysisOptionsService.updateDartLintRules(

@@ -8,29 +8,57 @@ part of 'analysis_options_service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(analysisOptionsService)
+final analysisOptionsServiceProvider = AnalysisOptionsServiceProvider._();
+
+final class AnalysisOptionsServiceProvider
+    extends
+        $FunctionalProvider<
+          AnalysisOptionsService,
+          AnalysisOptionsService,
+          AnalysisOptionsService
+        >
+    with $Provider<AnalysisOptionsService> {
+  AnalysisOptionsServiceProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'analysisOptionsServiceProvider',
+        isAutoDispose: true,
+        dependencies: <ProviderOrFamily>[outputDirProvider],
+        $allTransitiveDependencies: <ProviderOrFamily>[
+          AnalysisOptionsServiceProvider.$allTransitiveDependencies0,
+        ],
+      );
+
+  static final $allTransitiveDependencies0 = outputDirProvider;
+
+  @override
+  String debugGetCreateSourceHash() => _$analysisOptionsServiceHash();
+
+  @$internal
+  @override
+  $ProviderElement<AnalysisOptionsService> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  AnalysisOptionsService create(Ref ref) {
+    return analysisOptionsService(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AnalysisOptionsService value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AnalysisOptionsService>(value),
+    );
+  }
+}
+
 String _$analysisOptionsServiceHash() =>
     r'372e84ea1980e10830eb42cb45e2e6ba30164218';
-
-/// See also [analysisOptionsService].
-@ProviderFor(analysisOptionsService)
-final analysisOptionsServiceProvider =
-    AutoDisposeProvider<AnalysisOptionsService>.internal(
-      analysisOptionsService,
-      name: r'analysisOptionsServiceProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$analysisOptionsServiceHash,
-      dependencies: <ProviderOrFamily>[outputDirProvider],
-      allTransitiveDependencies: <ProviderOrFamily>{
-        outputDirProvider,
-        ...?outputDirProvider.allTransitiveDependencies,
-      },
-    );
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef AnalysisOptionsServiceRef =
-    AutoDisposeProviderRef<AnalysisOptionsService>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

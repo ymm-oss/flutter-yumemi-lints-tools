@@ -5,7 +5,6 @@ import 'package:file/file.dart';
 import 'package:meta/meta.dart';
 
 import 'package:pub_semver/pub_semver.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'diff_version_service.g.dart';
@@ -24,16 +23,14 @@ class DiffVersionService {
   Versions getDiffVersion() {
     final paths = diffPathListFile.readAsLinesSync();
     final versions = paths.map(extractVersion);
-    final flutterVersions =
-        versions
-            .where((version) => version.type == LintType.flutter)
-            .map((version) => version.version)
-            .toSet();
-    final dartVersions =
-        versions
-            .where((version) => version.type == LintType.dart)
-            .map((version) => version.version)
-            .toSet();
+    final flutterVersions = versions
+        .where((version) => version.type == LintType.flutter)
+        .map((version) => version.version)
+        .toSet();
+    final dartVersions = versions
+        .where((version) => version.type == LintType.dart)
+        .map((version) => version.version)
+        .toSet();
     return (flutter: flutterVersions, dart: dartVersions);
   }
 

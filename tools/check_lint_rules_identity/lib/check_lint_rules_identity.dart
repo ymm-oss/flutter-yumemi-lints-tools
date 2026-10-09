@@ -7,7 +7,13 @@ import 'package:file/file.dart';
 import 'package:file/local.dart';
 import 'package:meta/meta.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:riverpod_annotation/experimental/scope.dart';
 
+@Dependencies([
+  diffVersionService,
+  dartIdentityVerificationService,
+  flutterIdentityVerificationService,
+])
 Future<ExitStatus> run(List<String> argument) async {
   final fileSystem = LocalFileSystem();
 
@@ -35,6 +41,7 @@ Future<ExitStatus> run(List<String> argument) async {
       lintRulesDirProvider.overrideWithValue(lintRulesDir),
       versionPathsFileProvider.overrideWithValue(diffPathListFile),
     ],
+    retry: (_, _) => null,
   );
   try {
     final exitStatus = await checkLintRulesIdentity(container);
@@ -45,6 +52,11 @@ Future<ExitStatus> run(List<String> argument) async {
 }
 
 @visibleForTesting
+@Dependencies([
+  diffVersionService,
+  dartIdentityVerificationService,
+  flutterIdentityVerificationService,
+])
 Future<ExitStatus> checkLintRulesIdentity(ProviderContainer container) async {
   final diffVersionService = container.read(diffVersionServiceProvider);
   final dartIdentityVerificationService = container.read(

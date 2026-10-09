@@ -2,7 +2,6 @@ import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:update_lint_rules/src/clients/app_client.dart';
 import 'package:update_lint_rules/src/extension/yaml_map_ext.dart';
@@ -23,7 +22,7 @@ LintRuleService lintRuleService(Ref ref) {
 }
 
 class LintRuleService {
-  LintRuleService({required AppClient appClient}) : _appClient = appClient;
+  LintRuleService({required this._appClient});
 
   final AppClient _appClient;
 
@@ -111,8 +110,8 @@ class LintRuleService {
     );
     return (
       dart: recommendedRuleSeverities.whereType<RecommendedRuleSeverityDart>(),
-      flutter:
-          recommendedRuleSeverities.whereType<RecommendedRuleSeverityFlutter>(),
+      flutter: recommendedRuleSeverities
+          .whereType<RecommendedRuleSeverityFlutter>(),
     );
   }
 
@@ -191,8 +190,7 @@ typedef _NotRecommendedRule = ({String name, String reason});
 const _yumemiNotRecommendedRules = <_NotRecommendedRule>[
   (
     name: 'always_specify_types',
-    reason:
-        'Conflicts with enabling `avoid_types_on_closure_parameters`, `omit_local_variable_types`, `omit_obvious_local_variable_types`, `omit_obvious_property_types`.',
+    reason: 'Conflicts with enabling `avoid_types_on_closure_parameters`, `omit_local_variable_types`, `omit_obvious_local_variable_types`, `omit_obvious_property_types`.',
   ),
   (
     name: 'avoid_annotating_with_dynamic',
@@ -231,92 +229,81 @@ const _yumemiNotRecommendedRules = <_NotRecommendedRule>[
   ),
   (
     name: 'use_setters_to_change_properties',
-    reason:
-        "Don't trigger warnings with methods for simple state updates, among other things.",
+    reason: "Don't trigger warnings with methods for simple state updates, among other things.",
   ),
 ];
 
-typedef _RecommendedRuleSeverity =
-    ({String name, String reason, SeverityLevel severityLevel});
+typedef _RecommendedRuleSeverity = ({
+  String name,
+  String reason,
+  SeverityLevel severityLevel,
+});
 
 /// Severity levels of rule recommended by YUMEMI Inc.
 const _yumemiRecommendedRuleSeverities = <_RecommendedRuleSeverity>[
   (
     name: 'annotate_overrides',
-    reason:
-        'Superclass members should not be unintentionally overridden, as this reduces readability.',
+    reason: 'Superclass members should not be unintentionally overridden, as this reduces readability.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'annotate_redeclares',
-    reason:
-        'Class members should not be unintentionally redeclared, as this reduces readability.',
+    reason: 'Class members should not be unintentionally redeclared, as this reduces readability.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'avoid_implementing_value_types',
-    reason:
-        'When using implements, you do not inherit the method body of `==`, making it nearly impossible to follow the contract of `==`.',
+    reason: 'When using implements, you do not inherit the method body of `==`, making it nearly impossible to follow the contract of `==`.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'avoid_renaming_method_parameters',
-    reason:
-        "Parameter names in overridden methods that do not match the original method's parameter names are usually considered typos.",
+    reason: "Parameter names in overridden methods that do not match the original method's parameter names are usually considered typos.",
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'avoid_shadowing_type_parameters',
-    reason:
-        'Shadowing type parameters should not be used, as this reduces readability.',
+    reason: 'Shadowing type parameters should not be used, as this reduces readability.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'conditional_uri_does_not_exist',
-    reason:
-        'Should not reference files that do not exist for conditional imports, as this will result in possible runtime failures.',
+    reason: 'Should not reference files that do not exist for conditional imports, as this will result in possible runtime failures.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'depend_on_referenced_packages',
-    reason:
-        'When importing a package, add it as a dependency in pubspec to impose constraints on the dependency, protecting against breaking changes.',
+    reason: 'When importing a package, add it as a dependency in pubspec to impose constraints on the dependency, protecting against breaking changes.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'file_names',
-    reason:
-        'Some file systems are not case-sensitive, so many projects require filenames to be all lowercase.',
+    reason: 'Some file systems are not case-sensitive, so many projects require filenames to be all lowercase.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'implementation_imports',
-    reason:
-        "Files in the package's lib/src directory are not public APIs and should not be imported.",
+    reason: "Files in the package's lib/src directory are not public APIs and should not be imported.",
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'library_names',
-    reason:
-        'Some file systems are not case-sensitive, so many projects require filenames to be all lowercase.',
+    reason: 'Some file systems are not case-sensitive, so many projects require filenames to be all lowercase.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'matching_super_parameters',
-    reason:
-        'Super parameter names that do not match the parameter name of the corresponding super constructor are usually considered typos.',
+    reason: 'Super parameter names that do not match the parameter name of the corresponding super constructor are usually considered typos.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'null_check_on_nullable_type_parameter',
-    reason:
-        'When unwrapping to a generic type parameter T, using `x!` can lead to a runtime error if T is given a nullable type, so you should use `x as T` instead.',
+    reason: 'When unwrapping to a generic type parameter T, using `x!` can lead to a runtime error if T is given a nullable type, so you should use `x as T` instead.',
     severityLevel: SeverityLevel.error,
   ),
   (
     name: 'package_names',
-    reason:
-        'If package names are not determined according to the rules, unexpected problems may occur.',
+    reason: 'If package names are not determined according to the rules, unexpected problems may occur.',
     severityLevel: SeverityLevel.error,
   ),
   (

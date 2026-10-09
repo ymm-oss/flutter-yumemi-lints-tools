@@ -1,7 +1,7 @@
 name: yumemi_lints_tools_workspace
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.13.5
 
 workspace:
   - tools/check_lint_rules_identity

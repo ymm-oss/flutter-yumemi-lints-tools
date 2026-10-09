@@ -2,7 +2,7 @@
 min_version = "2026.9.16"
 
 [tools]
-dart = "3.7.2"
+dart = "3.13.5"
 
 # Workspace tasks run in each tool package.
 # Add a new package to every loop below.
@@ -14,7 +14,7 @@ run = '''
 for dir in tools/check_lint_rules_identity tools/update_lint_rules; do
   (
     cd "$dir"
-    dart run build_runner build -d
+    dart run build_runner build
   )
 done
 '''
