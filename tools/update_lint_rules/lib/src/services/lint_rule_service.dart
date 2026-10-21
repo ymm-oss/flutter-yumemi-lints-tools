@@ -201,6 +201,10 @@ const _yumemiNotRecommendedRules = <_NotRecommendedRule>[
     reason: 'There are cases that are warned but not fixed by `dart fix`.',
   ),
   (name: 'flutter_style_todos', reason: "Don't use Flutter-style todos."),
+  (
+    name: 'no_dynamic_casts',
+    reason: 'Keep enabling `strict-casts`. `no_dynamic_casts` does not check constructor initializer list field assignments, so it is not a full replacement.',
+  ),
   (name: 'one_member_abstracts', reason: 'May add more methods later.'),
   (
     name: 'prefer_double_quotes',
@@ -295,6 +299,11 @@ const _yumemiRecommendedRuleSeverities = <_RecommendedRuleSeverity>[
     name: 'matching_super_parameters',
     reason: 'Super parameter names that do not match the parameter name of the corresponding super constructor are usually considered typos.',
     severityLevel: SeverityLevel.error,
+  ),
+  (
+    name: 'no_raw_types',
+    reason: 'Replaces `strict-raw-types`. The lint defaults to info, so set it to warning to keep the previous severity.',
+    severityLevel: SeverityLevel.warning,
   ),
   (
     name: 'null_check_on_nullable_type_parameter',
